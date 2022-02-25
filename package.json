@@ -1,8 +1,8 @@
 {
   "name": "neo-jquery-slide",
-  "version": "1.0.1",
+  "version": "1.0.11",
   "description": "plugin de neo-jquery para la creacion de sliders",
-  "browser": "index.js",
+  "browser": "./browser/index.js",
   "keywords": [
     "plugin",
     "slider",

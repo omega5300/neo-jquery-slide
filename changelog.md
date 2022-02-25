@@ -6,6 +6,6 @@ history version slider plugin
 
 fisrt version using two functions neo-jquery $selector and $selectorAll
 
-### patch 1.0.01
+### patch 1.0.11
 
 reorder files and rewriting package json
