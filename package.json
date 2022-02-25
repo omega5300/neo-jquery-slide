@@ -1,0 +1,17 @@
+{
+  "name": "neo-jquery-slide",
+  "version": "1.0.01",
+  "description": "plugin de neo-jquery para la creacion de sliders",
+  "browser": "index.js",
+  "keywords": ["plugin", "slider", "neo-jquery"],
+  "export": {
+    ".": "./cjs/index.cjs",
+    "./cjs": "./cjs/index.cjs",
+    "./esm": "./esm/index.mjs"
+  },
+  "author": "omega5300",
+  "license": "MIT",
+  "dependencies": {
+    "neo-jquery": "^1.0.4"
+  }
+}
