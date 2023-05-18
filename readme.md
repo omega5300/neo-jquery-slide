@@ -71,5 +71,5 @@ $slider("slider")
 ``` js
 import $slider from 'neo-jquery-slide'
 
-$slider(".mySlides").showSlider(1);
+$slider("slider")
 ```
