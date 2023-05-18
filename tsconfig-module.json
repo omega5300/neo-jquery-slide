@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "./module",
+  },
+  "files": [
+    "./src/module/index.ts"
+  ],
+  "exclude": [ "./src/browser" ],
+  "extends": "./tsconfig.json",
+}

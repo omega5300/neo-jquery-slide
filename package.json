@@ -1,6 +1,6 @@
 {
   "name": "neo-jquery-slide",
-  "version": "1.0.11",
+  "version": "1.0.2",
   "description": "plugin de neo-jquery para la creacion de sliders",
   "browser": "./browser/index.js",
   "keywords": [
@@ -8,19 +8,17 @@
     "slider",
     "neo-jquery"
   ],
-  "export": {
-    ".": "./cjs/index.cjs",
-    "./cjs": "./cjs/index.cjs",
-    "./esm": "./esm/index.mjs"
-  },
   "author": "omega5300",
   "license": "MIT",
   "dependencies": {
-    "neo-jquery": "^1.0.4"
+    "neo-jquery": "^1.1.0"
   },
-  "main": "index.js",
+  "main": "module/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "demo": "tsc --help",
+    "ts-browser": "tsc -p ./tsconfig-browser.json",
+    "ts-module": "tsc -p ./tsconfig-module.json",
+    "build": "npm run ts-browser && npm run ts-module"
   },
   "repository": {
     "type": "git",
@@ -29,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/omega5300/neo-jquery-slide/issues"
   },
-  "homepage": "https://github.com/omega5300/neo-jquery-slide#readme"
+  "homepage": "https://github.com/omega5300/neo-jquery-slide#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
 }

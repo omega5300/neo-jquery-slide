@@ -2,6 +2,9 @@
 
 history version slider plugin
 
+## version 1.0.2
+rewrite all code
+
 ## version 1.0.0
 
 fisrt version using two functions neo-jquery $selector and $selectorAll

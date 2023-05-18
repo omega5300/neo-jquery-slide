@@ -1,36 +1,48 @@
 function $slider(el) {
-  let slideIndex = 1;
-
-  // all elements
-  const slides = $selectorAll(el);
-  const dots = $selectorAll('.dot');
-
-  const currentSlide = slide => showSlider((slideIndex = slide));
-
-  const showSlider = n => {
-    if (n > slides.length) {
-      slideIndex = 1;
-    } else if (n < 1) {
-      slideIndex = slides.length;
-    }
-
-    slides.forEach(slide => (slide.style.display = 'none'));
-
-    dots.forEach((dot, i) => {
-      dots[i].classList.remove('active');
-      dot.addEventListener('click', () => currentSlide(i + 1))
-    });
-
-    slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].classList.add('active');
-  };
-
-  $selector('.prev').addEventListener('click', () => {
-    showSlider((slideIndex -= 1))
-  });
-  $selector('.next').addEventListener('click', () => {
-    showSlider((slideIndex += 1))
-  });
-
-  return { showSlider };
+    const slider = $id(el);
+    const buttonLeft = $id('button-left');
+    const buttonRight = $id('button-right');
+    const sliderElements = $selectorAll('.slider__element');
+    const rootStyles = $root.style;
+    let slideCounter = 0;
+    let isInTransition = false;
+    const DIRECTION = {
+        RIGHT: 'RIGHT',
+        LEFT: 'LEFT'
+    };
+    const getTransformValue = () => Number(rootStyles.getPropertyValue('--slide-transform').replace('px', ''));
+    const reorderSlide = () => {
+        const transformValue = getTransformValue();
+        rootStyles.setProperty('--transition', 'none');
+        if (slideCounter === sliderElements.length - 1) {
+            slider.appendChild(slider.firstElementChild);
+            rootStyles.setProperty('--slide-transform', `${transformValue + sliderElements[slideCounter].scrollWidth}px`);
+            slideCounter--;
+        }
+        else if (slideCounter === 0) {
+            slider.prepend(slider.lastElementChild);
+            rootStyles.setProperty('--slide-transform', `${transformValue - sliderElements[slideCounter].scrollWidth}px`);
+            slideCounter++;
+        }
+        isInTransition = false;
+    };
+    const moveSlide = (direction) => {
+        if (isInTransition)
+            return;
+        const transformValue = getTransformValue();
+        rootStyles.setProperty('--transition', 'transform 1s');
+        isInTransition = true;
+        if (direction === DIRECTION.LEFT) {
+            rootStyles.setProperty('--slide-transform', `${transformValue + sliderElements[slideCounter].scrollWidth}px`);
+            slideCounter--;
+        }
+        else if (direction === DIRECTION.RIGHT) {
+            rootStyles.setProperty('--slide-transform', `${transformValue - sliderElements[slideCounter].scrollWidth}px`);
+            slideCounter++;
+        }
+    };
+    buttonRight.addEventListener('click', () => moveSlide(DIRECTION.RIGHT));
+    buttonLeft.addEventListener('click', () => moveSlide(DIRECTION.LEFT));
+    slider.addEventListener('transitionend', reorderSlide);
+    reorderSlide();
 }

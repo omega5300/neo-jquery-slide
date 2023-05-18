@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "None",
+    "declaration": false,
+    "outDir": "./browser"
+  },
+  "files": [
+    "./src/browser/index.ts",
+  ],
+  "include": [ "./src/browser/types.d.ts" ],
+  "exclude": [ "./src/module" ],
+  "extends": "./tsconfig.json"
+}
